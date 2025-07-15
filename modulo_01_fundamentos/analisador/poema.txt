@@ -1,0 +1,4 @@
+Elixir, elixir, como é bom programar.
+Com o pipe, a vida fica fácil de levar.
+Programar em elixir é como sonhar,
+uma função leva a outra, sem parar.
