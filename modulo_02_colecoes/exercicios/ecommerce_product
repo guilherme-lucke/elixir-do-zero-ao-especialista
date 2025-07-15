@@ -1,0 +1,37 @@
+defmodule Ecommerce.Product do
+  defstruct [:id, :name, :price, in_stock: true]
+
+  def produtos_em_promocao(lista_de_produtos) do
+    Enum.filter(lista_de_produtos, fn produto ->
+      produto.in_stock == true and produto.price < 100.00
+    end)
+  end
+end
+
+# --- Área de Testes ---
+
+# Para testar no iex:
+# iex> produtos = [
+# ...>   %Ecommerce.Product{id: 1, name: "Teclado", price: 350.0},
+# ...>   %Ecommerce.Product{id: 2, name: "Mouse", price: 80.0},
+# ...>   %Ecommerce.Product{id: 3, name: "Mousepad", price: 45.0, in_stock: false},
+# ...>   %Ecommerce.Product{id: 4, name: "Webcam", price: 99.90}
+# ...> ]
+# iex> Ecommerce.Product.produtos_em_promocao(produtos)
+# [
+#   %Ecommerce.Product{id: 2, name: "Mouse", price: 80.0, in_stock: true},
+#   %Ecommerce.Product{id: 4, name: "Webcam", price: 99.9, in_stock: true}
+# ]
+
+defmodule Main do
+  def run do
+    produtos = [
+      %Ecommerce.Product{id: 1, name: "Teclado", price: 350.0},
+      %Ecommerce.Product{id: 2, name: "Mouse", price: 80.0},
+      %Ecommerce.Product{id: 3, name: "Mousepad", price: 45.0, in_stock: false},
+      %Ecommerce.Product{id: 4, name: "Webcam", price: 99.90}
+    ]
+    IO.inspect Ecommerce.Product.produtos_em_promocao(produtos)
+  end
+end
+Main.run()
